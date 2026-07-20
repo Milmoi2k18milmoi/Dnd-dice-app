@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DnD Dice Roller & History</title>
+  
+  <!-- CODUL TĂU GOOGLE ADSENSE -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8553430410065516" crossorigin="anonymous"></script>
+
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #121212; color: #fff; text-align: center; padding: 20px; }
+    .card { background: #1e1e1e; max-width: 400px; margin: 0 auto; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0; }
+    button { background: #6200ee; color: white; border: none; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+    button:hover { background: #3700b3; }
+    .result { font-size: 32px; font-weight: bold; margin: 20px 0; color: #03dac6; min-height: 40px; }
+    ul { list-style: none; padding: 0; max-height: 150px; overflow-y: auto; text-align: left; background: #2a2a2a; border-radius: 6px; padding: 10px; }
+    li { padding: 5px 0; border-bottom: 1px solid #333; font-size: 14px; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>🎲 DnD Dice Roller</h1>
+    
+    <div class="grid">
+      <button onclick="roll(4)">d4</button>
+      <button onclick="roll(6)">d6</button>
+      <button onclick="roll(8)">d8</button>
+      <button onclick="roll(10)">d10</button>
+      <button onclick="roll(12)">d12</button>
+      <button onclick="roll(20)">d20</button>
+    </div>
+
+    <div id="result" class="result">Alege un zar!</div>
+
+    <h3>Istoric</h3>
+    <ul id="history"></ul>
+  </div>
+
+  <script>
+    function roll(sides) {
+      const res = Math.floor(Math.random() * sides) + 1;
+      document.getElementById('result').innerText = 'd' + sides + ' ➔ ' + res;
+      
+      const li = document.createElement('li');
+      li.innerText = new Date().toLocaleTimeString() + ' - Ai dat d' + sides + ' și a picat: ' + res;
+      const history = document.getElementById('history');
+      history.insertBefore(li, history.firstChild);
+    }
+  </script>
+
+</body>
+</html>
